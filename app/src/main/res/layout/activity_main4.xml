@@ -8,6 +8,7 @@
     android:foregroundTint="#100A0A"
     tools:context=".MainActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,8 +20,8 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="#F8F8F8"
-            android:text="@string/oo"
+            android:shadowColor="#000000"
+            android:text="@string/티켓"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -34,24 +35,30 @@
             android:scrollbarSize="5dp"
             android:visibility="visible" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            style="@style/Widget.AppCompat.AutoCompleteTextView"
-            android:layout_width="292dp"
-            android:layout_height="53dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/div"
-            android:autofillHints="" />
+        <TableLayout
+            android:layout_width="311dp"
+            android:layout_height="258dp">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:shadowColor="#000000"
-            android:text="@string/vendino"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+            <TableRow
+                android:layout_width="388dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="163dp"
+                    android:layout_height="167dp"
+                    app:srcCompat="@drawable/picture"
+                    android:contentDescription="@string/todo" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="163dp"
+                    android:layout_height="165dp"
+                    app:srcCompat="@drawable/picture"
+                    android:contentDescription="@string/todo" />
+            </TableRow>
+
+        </TableLayout>
 
     </LinearLayout>
 

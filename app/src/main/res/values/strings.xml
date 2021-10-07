@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">front</string>
+    <string name="티켓구매">티켓 구매</string>
+    <string name="티켓">티켓구매</string>
+    <string name="todo1">TODO</string>
+    <string name="oo">문의하기</string>
+    <string name="div">내용을 입력하세요.</string>
+    <string name="vendino2">Vendino</string>
+    <string name="todo2">TODO</string>
+    <string name="todo3">TODO</string>
+    <string name="button13">개발자에게 문의하기</string>
 </resources>
