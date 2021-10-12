@@ -3,6 +3,10 @@
     package="com.example.front">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
 
     <application
         android:allowBackup="true"
@@ -12,7 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Front"
         android:usesCleartextTraffic="true">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCNyO0SZckISU8MmKwcoSvbO-wMeOWqjH8"/>
         <activity android:name=".FindPassword"></activity>
+        <activity android:name=".MapActivity"></activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

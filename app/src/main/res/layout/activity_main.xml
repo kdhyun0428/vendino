@@ -12,7 +12,10 @@
         android:id="@+id/textView"
         android:layout_width="93dp"
         android:layout_height="49dp"
-        android:text="Vendino"
+        android:text="여기다"
+        android:textSize="30dp"
+        
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,6 +65,7 @@
             android:layout_height="48dp"
             android:text="비밀번호 찾기"
             android:onClick="findPassword"
+            android:textAlignment="center"
             />
 
         <TextView
@@ -69,6 +73,7 @@
             android:layout_width="102dp"
             android:layout_height="48dp"
             android:text="회원가입"
+            android:textAlignment="center"
 
             />
 
@@ -76,7 +81,9 @@
             android:id="@+id/textView5"
             android:layout_width="102dp"
             android:layout_height="48dp"
-            android:text="아이디 찾기" />
+            android:text="아이디 찾기"
+            android:textAlignment="center"
+            />
 
     </LinearLayout>
 
@@ -88,6 +95,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="58dp"
         android:text="로그인"
+        android:onClick="loginHandler"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
