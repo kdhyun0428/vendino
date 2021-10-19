@@ -74,7 +74,7 @@
             android:layout_height="48dp"
             android:text="회원가입"
             android:textAlignment="center"
-
+            android:onClick="signUpHandler"
             />
 
         <TextView
