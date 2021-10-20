@@ -47,7 +47,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void signUp(View view) {
-        if (
+                if (
                 email1.getText().length() == 0 ||//email 앞부분검사
                         email2.getText().length() == 0//email 뒷부분검사
         ) {
@@ -81,6 +81,8 @@ public class SignUp extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(), "회원가입 성공", Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(getApplicationContext(), MapActivity.class);
                                     intent.putExtra("user",response.body().toString());
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);//액티비티 스택제거
+                                    //참조 사이트 https://dduntorry.tistory.com/entry/Activity-%EC%8A%A4%ED%83%9D-%EC%A0%9C%EA%B1%B0
                                     startActivity(intent);
                                 }
                             }

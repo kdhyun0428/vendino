@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Front"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+        <activity
             android:name=".SignUp"
             android:exported="true" />
 

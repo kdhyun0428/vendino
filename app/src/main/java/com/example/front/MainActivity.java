@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginHandler(View view) {
-        Intent intent = new Intent(getApplicationContext(), MapActivity.class);
+        Intent intent = new Intent(getApplicationContext(), HomeActivity
+                .class);
         startActivity(intent);
     }
 
