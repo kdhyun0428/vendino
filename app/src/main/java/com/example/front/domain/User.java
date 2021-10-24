@@ -1,6 +1,8 @@
 package com.example.front.domain;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     long uid;
     String id;
     String pw;

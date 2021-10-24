@@ -17,4 +17,6 @@ public interface Service {
     @POST("user-save")
     Call<JsonObject> saveUser(@Body User user);
 
+    @POST("login")
+    Call<JsonObject> login(@Body User user);
 }

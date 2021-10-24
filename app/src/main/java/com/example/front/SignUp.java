@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.front.domain.User;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
@@ -80,7 +81,9 @@ public class SignUp extends AppCompatActivity {
                                 if(response.isSuccessful()){
                                     Toast.makeText(getApplicationContext(), "회원가입 성공", Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(getApplicationContext(), MapActivity.class);
-                                    intent.putExtra("user",response.body().toString());
+                                    Gson gson = new Gson();
+                                    User _signUped = gson.fromJson(response.body(), User.class);
+                                    intent.putExtra("user",_signUped);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);//액티비티 스택제거
                                     //참조 사이트 https://dduntorry.tistory.com/entry/Activity-%EC%8A%A4%ED%83%9D-%EC%A0%9C%EA%B1%B0
                                     startActivity(intent);
