@@ -96,7 +96,7 @@ public class MapActivity extends AppCompatActivity {
     }
 
     public void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
 
@@ -105,6 +105,17 @@ public class MapActivity extends AppCompatActivity {
 
         try {
             Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+
+            GPSListener gpsListener = new GPSListener();
+            long minTime = 10000;
+            float minDistance = 0;
+            Log.d("GPSListener2", "GPSListener2");
+
+            manager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER,
+                    minTime, minDistance, gpsListener);
+
             if (location != null) {
                 double latitude = location.getLatitude();
                 double longitude = location.getLongitude();
@@ -112,19 +123,14 @@ public class MapActivity extends AppCompatActivity {
 
                 Log.d("Map", message);
             }
+            Log.d("GPSListener", "GPSListener");
 
-            GPSListener gpsListener = new GPSListener();
-            long minTime = 10000;
-            float minDistance = 0;
+            Toast.makeText(getApplicationContext(), "내 위치확인 요청함", Toast.LENGTH_SHORT).show();
 
-            manager.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER,
-                    minTime, minDistance, gpsListener);
-
-            Toast.makeText(getApplicationContext(), "내 위치확인 요청함",
-                    Toast.LENGTH_SHORT).show();
-
+            gpsListener.onLocationChanged(location);
         } catch(SecurityException e) {
+            Log.d("SecurityException", "SecurityException");
+
             e.printStackTrace();
         }
     }
@@ -148,14 +154,20 @@ public class MapActivity extends AppCompatActivity {
     }
 
     private void showCurrentLocation(Double latitude, Double longitude) {
+        Log.d("showCurrentLocation", "showCurrentLocation");
         LatLng curPoint = new LatLng(latitude, longitude);
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint, 15));
+        Log.d("showCurrentLocation2", "showCurrentLocation2");
 
         showMyLocationMarker(curPoint);
     }
 
     private void showMyLocationMarker(LatLng curPoint) {
+        Log.d("showMyLocationMarker", "showMyLocationMarker");
+
         if (myLocationMarker == null) {
+            Log.d("showMyLocationMarker", "showMyLocationMarker null");
+
             myLocationMarker = new MarkerOptions();
             myLocationMarker.position(curPoint);
             myLocationMarker.title("● 내 위치\n");
@@ -163,6 +175,8 @@ public class MapActivity extends AppCompatActivity {
             myLocationMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mylocation));
             map.addMarker(myLocationMarker);
         } else {
+            Log.d("showMyLocationMarker2", "showMyLocationMarker2 null");
+
             myLocationMarker.position(curPoint);
         }
     }
