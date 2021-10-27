@@ -44,6 +44,7 @@ public class MapActivity extends AppCompatActivity {
     GoogleMap map;
 
     MarkerOptions myLocationMarker;
+    MarkerOptions destinationMarker;
     Button button=null;
     Button startbutton=null;
     LinearLayout container = null;
@@ -78,6 +79,7 @@ public class MapActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startLocationService();
+
             }
         });
 
@@ -121,7 +123,7 @@ public class MapActivity extends AppCompatActivity {
             }
 
             GPSListener gpsListener = new GPSListener();
-            long minTime = 1000;
+            long minTime = 3000;
             float minDistance = 0;
 //            Log.d("GPSListener2", "GPSListener2");
 
@@ -174,6 +176,17 @@ public class MapActivity extends AppCompatActivity {
 
         showMyLocationMarker(curPoint);
     }
+    private void showDestinationLocation(Double latitude, Double longitude){
+        LatLng curPoint = new LatLng(latitude, longitude);
+
+        destinationMarker = new MarkerOptions();
+        destinationMarker.position(curPoint);
+        destinationMarker.title("● 내 위치\n");
+        destinationMarker.snippet("● GPS로 확인한 위치");
+        destinationMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mylocation));
+        map.addMarker(destinationMarker);
+
+    }
 
     private void showMyLocationMarker(LatLng curPoint) {
         Log.d("showMyLocationMarker", "showMyLocationMarker");
@@ -199,14 +212,15 @@ public class MapActivity extends AppCompatActivity {
         startbutton.setVisibility(View.GONE);
         container.setVisibility(View.VISIBLE);
     }
+    //지도 모서리 gps or wifi로 위치찾기 버튼
     public void locationSetting(View view) {
         if (view != null) {
-            view.setSelected(!view.isSelected());
+            flag = !flag;
+            view.setSelected(flag);
         }
-
     }
 
-
+    //뒤로가기 버튼  리스너
     @Override
     public void onBackPressed() {
         System.out.println(startbutton.getVisibility());
