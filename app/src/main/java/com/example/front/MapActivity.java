@@ -1,5 +1,7 @@
 package com.example.front;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -7,8 +9,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -39,15 +44,18 @@ public class MapActivity extends AppCompatActivity {
     GoogleMap map;
 
     MarkerOptions myLocationMarker;
-
-
+    Button button=null;
+    Button startbutton=null;
+    LinearLayout container = null;
+    boolean flag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-
+        startbutton = findViewById(R.id.startbutton);
+        container = findViewById(R.id.container);
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -65,7 +73,7 @@ public class MapActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        Button button = findViewById(R.id.button);
+        button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,13 +112,18 @@ public class MapActivity extends AppCompatActivity {
         LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         try {
-            Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
+            Location location = null;
+            if(flag){
+                location  = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            }
+            else{
+                location  = manager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            }
 
             GPSListener gpsListener = new GPSListener();
-            long minTime = 10000;
+            long minTime = 1000;
             float minDistance = 0;
-            Log.d("GPSListener2", "GPSListener2");
+//            Log.d("GPSListener2", "GPSListener2");
 
             manager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER,
@@ -123,7 +136,7 @@ public class MapActivity extends AppCompatActivity {
 
                 Log.d("Map", message);
             }
-            Log.d("GPSListener", "GPSListener");
+//            Log.d("GPSListener", "GPSListener");
 
             Toast.makeText(getApplicationContext(), "내 위치확인 요청함", Toast.LENGTH_SHORT).show();
 
@@ -181,9 +194,45 @@ public class MapActivity extends AppCompatActivity {
         }
     }
 
+    public void startHandler(View view) {
+        button.setVisibility(View.GONE);
+        startbutton.setVisibility(View.GONE);
+        container.setVisibility(View.VISIBLE);
+    }
+    public void locationSetting(View view) {
+        if (view != null) {
+            view.setSelected(!view.isSelected());
+        }
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        System.out.println(startbutton.getVisibility());
+        if(startbutton.getVisibility()!=View.VISIBLE){
+            container.setVisibility(View.GONE);
+            button.setVisibility(View.VISIBLE);
+            startbutton.setVisibility(View.VISIBLE);
+        }
+        else{
+            super.onBackPressed();
+        }
+    }
 }
 
 
 
 
+//36.026723,129.3657243
 
+//우 36.025662199567385, 129.37926350394966
+//위 36.03469116459556, 129.36803141321369
+//왼 36.0258483896084, 129.35695259399662
+//가운데 36.025662199567385, 129.36802041067705
+//밑 36.016714284584715, 129.36802408049527
+
+//우측(0,0.01124309327261)
+//왼쪽(0.000186190041015,-0.01106781668043)
+//위(0.009028965028175,0.00001100253664)
+//아래(-0.00894791498267,0.00000366981822 )

@@ -70,8 +70,6 @@ public class HomeActivity extends AppCompatActivity {
                                     }
                                     recyclerView.setAdapter(adapter);
 
-
-
                                 }
                             }
 
