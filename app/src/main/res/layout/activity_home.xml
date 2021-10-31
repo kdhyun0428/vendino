@@ -17,13 +17,26 @@
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:gravity="center"
+
         >
         <Button
             android:id="@+id/startbutton"
             android:layout_width="64dp"
             android:layout_height="32dp"
             android:text="걷기"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="goToMap"
+
+            />
+        <ImageView
+            android:onClick="goToSetting"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:src="@drawable/mylocation"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             />
     </RelativeLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

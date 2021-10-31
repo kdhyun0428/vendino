@@ -1,5 +1,6 @@
 package com.example.front;
 
+import com.example.front.domain.ReportParam;
 import com.example.front.domain.User;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -19,4 +20,7 @@ public interface Service {
 
     @POST("login")
     Call<JsonObject> login(@Body User user);
+
+    @POST("report-save")
+    Call<JsonObject> saveReport(@Body ReportParam reportParam);
 }

@@ -49,12 +49,12 @@
             android:layout_height="93dp"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <EditText
+        <TextView
             android:id="@+id/editTextTextEmailAddress"
             android:layout_width="225dp"
             android:layout_height="27dp"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:text="유저이름"
+            />
 
         <Button
             android:id="@+id/button13"

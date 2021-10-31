@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.front.domain.User;
@@ -37,55 +38,74 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         UserAdapter adapter = new UserAdapter();
 
-//
-//
-//        adapter.addItem(new Person("김민수","010-1000-1000"));
-//        adapter.addItem(new Person("김하늘","010-1000-1000"));
-//        adapter.addItem(new Person("홍길동","010-000-1000"));
-//        recyclerView.setAdapter(adapter);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if(recyclerView!=null){
-            Call<JsonArray> call = service.getUseres();
-            try {
-                call.enqueue(
-                        new Callback<JsonArray>() {
-                            @Override
-                            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
-                                System.out.println("response : "+response.body());
-                                if(response.isSuccessful()){
-                                    JsonArray result =  response.body();
-                                    ArrayList<User> users = new ArrayList<User>();
-                                    UserAdapter adapter = new UserAdapter();
+        //임시 데이터
+        ArrayList<User> users = new ArrayList<User>();
+        UserAdapter adapter = new UserAdapter();
+        for(int i=0;i<5;i++){
+            User user = new User();
+            user.setName("user"+i);
+            user.setPoint(i);
+            adapter.addItem(user);
 
-                                    for(int i =0;i<result.size();i++){
-                                        Gson gson = new Gson();
-                                        User user = gson.fromJson(result.get(i), User.class);
-                                        System.out.println("user : "+result.get(i)+"/"+user.getName());
-                                        //users.add(user);
-                                        adapter.addItem(user);
-                                    }
-                                    recyclerView.setAdapter(adapter);
-
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<JsonArray> call, Throwable t) {
-
-                            }
-                        }
-                );
-
-            } catch (Exception e) {
-                System.out.println(e.toString());
-                e.printStackTrace();
-            }
         }
 
+                                        //users.add(user);
+        recyclerView.setAdapter(adapter);
 
+//        if(recyclerView!=null){
+//            Call<JsonArray> call = service.getUseres();
+//            try {
+//                call.enqueue(
+//                        new Callback<JsonArray>() {
+//                            @Override
+//                            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+//                                System.out.println("response : "+response.body());
+//                                if(response.isSuccessful()){
+//                                    JsonArray result =  response.body();
+//                                    ArrayList<User> users = new ArrayList<User>();
+//                                    UserAdapter adapter = new UserAdapter();
+//
+//                                    for(int i =0;i<result.size();i++){
+//                                        Gson gson = new Gson();
+//                                        User user = gson.fromJson(result.get(i), User.class);
+//                                        System.out.println("user : "+result.get(i)+"/"+user.getName());
+//                                        //users.add(user);
+//                                        adapter.addItem(user);
+//                                    }
+//                                    recyclerView.setAdapter(adapter);
+//
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<JsonArray> call, Throwable t) {
+//
+//                            }
+//                        }
+//                );
+//
+//            } catch (Exception e) {
+//                System.out.println(e.toString());
+//                e.printStackTrace();
+//            }
+//        }
+
+
+    }
+
+    public void goToSetting(View view) {
+        Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToMap(View view) {
+        Intent intent = new Intent(getApplicationContext(), MapActivity.class);
+        startActivity(intent);
     }
 }

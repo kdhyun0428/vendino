@@ -49,39 +49,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginHandler(View view) {
-        User loginUser = new User();
-
-        loginUser.setId(id.getText().toString());
-        loginUser.setPw(pw.getText().toString());
-
-        Call<JsonObject> call = service.login(loginUser);
-        try {
-        call.enqueue(new Callback<JsonObject>() {
-            @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if(response.isSuccessful()){
-                    System.out.println(response.body().toString());
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    Gson gson = new Gson();
-                    User _logined = gson.fromJson(response.body(), User.class);
-                    intent.putExtra("user",_logined);
-                    //        User person = (Person)intent.getSerializableExtra("user");
-                    startActivity(intent);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
-
-            }
-        });
-
-        } catch (Exception e) {
-            System.out.println(e.toString());
-            e.printStackTrace();
-        }
-
+//        User loginUser = new User();
+//
+//        loginUser.setId(id.getText().toString());
+//        loginUser.setPw(pw.getText().toString());
+//
+//        Call<JsonObject> call = service.login(loginUser);
+//        try {
+//        call.enqueue(new Callback<JsonObject>() {
+//            @Override
+//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+//                if(response.isSuccessful()){
+//                    System.out.println(response.body().toString());
+//                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+//                    Gson gson = new Gson();
+//                    User _logined = gson.fromJson(response.body(), User.class);
+//                    intent.putExtra("user",_logined);
+//                    startActivity(intent);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<JsonObject> call, Throwable t) {
+//                Toast.makeText(getApplicationContext(),t.toString(),Toast.LENGTH_LONG).show();
+//
+//            }
+//        });
+//
+//        } catch (Exception e) {
+//            System.out.println(e.toString());
+//            e.printStackTrace();
+//        }
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(intent);
 
 
     }
@@ -90,4 +90,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), SignUp.class);
         startActivity(intent);
     }
+
+
 }

@@ -7,7 +7,7 @@ public class APIClient {
     private static Retrofit retorfit;
     public Retrofit getRetrofit() {
         Retrofit.Builder builder = new Retrofit.Builder() ;
-        builder.baseUrl("http://192.168.219.103:8080/");
+        builder.baseUrl("http://192.168.118.174:8080/");
         builder.addConverterFactory( GsonConverterFactory.create());
         retorfit = builder.build();
 

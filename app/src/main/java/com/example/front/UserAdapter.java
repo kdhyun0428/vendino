@@ -72,8 +72,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             name.setText(item.getName());
             point.setText(Integer.toString(item.getPoint()));
             int tempRanking = 0;
+            //랭킹 부분
+            //현재는 랭킹 숫자가 맞지 않으나 서버에서 데이터를 받을때 정렬이 되어 내려 올것입니다.
             if(item.getPoint()>0){
-                tempRanking = item.getPoint()+1;
+                tempRanking = ranking+1;
             }
             else{
                 tempRanking=0;

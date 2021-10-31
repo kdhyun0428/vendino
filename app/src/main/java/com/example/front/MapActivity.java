@@ -49,6 +49,8 @@ public class MapActivity extends AppCompatActivity {
     Button startbutton=null;
     LinearLayout container = null;
     boolean flag = true;
+    Double latitude=null;
+    Double longitude =null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,13 +94,13 @@ public class MapActivity extends AppCompatActivity {
                 .onGranted(new Action<List<String>>() {
                     @Override
                     public void onAction(List<String> permissions) {
-                        showToast("허용된 권한 갯수 : " + permissions.size());
+                        //showToast("허용된 권한 갯수 : " + permissions.size());
                     }
                 })
                 .onDenied(new Action<List<String>>() {
                     @Override
                     public void onAction(List<String> permissions) {
-                        showToast("거부된 권한 갯수 : " + permissions.size());
+                        //showToast("거부된 권한 갯수 : " + permissions.size());
                     }
                 })
                 .start();
@@ -152,8 +154,8 @@ public class MapActivity extends AppCompatActivity {
 
     class GPSListener implements LocationListener {
         public void onLocationChanged(Location location) {
-            Double latitude = location.getLatitude();
-            Double longitude = location.getLongitude();
+             latitude = location.getLatitude();
+             longitude = location.getLongitude();
 
             String message = "내 위치 -> Latitude : "+ latitude + "\nLongitude:"+ longitude;
             Log.d("Map", message);
@@ -175,8 +177,10 @@ public class MapActivity extends AppCompatActivity {
         Log.d("showCurrentLocation2", "showCurrentLocation2");
 
         showMyLocationMarker(curPoint);
+        showDestinationLocation();
     }
-    private void showDestinationLocation(Double latitude, Double longitude){
+    private void showDestinationLocation(){
+
         LatLng curPoint = new LatLng(latitude, longitude);
 
         destinationMarker = new MarkerOptions();
@@ -185,6 +189,21 @@ public class MapActivity extends AppCompatActivity {
         destinationMarker.snippet("● GPS로 확인한 위치");
         destinationMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mylocation));
         map.addMarker(destinationMarker);
+        int x1 = (int)Math.random()*(1861900+0+1)+0;
+        int y1 = (int)Math.random()*(112430932+116781668+1)-116781668;
+        double tempX1 = latitude+x1;
+        double tempY1 = longitude+y1;
+        Log.d("tempX1", tempX1+"");
+        Log.d("tempY1", tempY1+"");
+
+
+        int x2 = (int)Math.random()*(902896502+894791498+1)-894791498;
+        int y2 = (int)Math.random()*(11002536-3669818+1)+3669818;
+        double tempX2 = latitude+x2;
+        double tempY2 = longitude+y2;
+        Log.d("tempX2", tempX2+"");
+        Log.d("tempY2", tempY2+"");
+
 
     }
 
@@ -250,3 +269,8 @@ public class MapActivity extends AppCompatActivity {
 //왼쪽(0.000186190041015,-0.01106781668043)
 //위(0.009028965028175,0.00001100253664)
 //아래(-0.00894791498267,0.00000366981822 )
+
+//1861900 /  -116781668 112430932
+//
+//9028965028,11002536
+//-8947914982, 3669818
