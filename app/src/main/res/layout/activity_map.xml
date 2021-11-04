@@ -8,7 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="내 위치 요청하기" />
+        android:text="내 위치 요청하기"
+        android:OnClick=""/>
 
     <LinearLayout
         android:id="@+id/container"
