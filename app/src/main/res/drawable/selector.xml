@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_selected="true"
+        android:drawable="@drawable/wifi_24" />
+    <item
+        android:drawable="@drawable/gps_fixed_24" />
+</selector>
+<!--  참조사이트:  https://h-glacier.tistory.com/115-->
