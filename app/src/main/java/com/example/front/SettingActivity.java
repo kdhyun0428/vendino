@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.example.front.domain.User;
 
 public class SettingActivity extends AppCompatActivity {
-    TextView userId=null;
     User loginUser=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +17,6 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         Bundle bundle2 = getIntent().getExtras();
         loginUser= (User) bundle2.getSerializable("user");
-        userId = findViewById(R.id.userId);
-        userId.setText(loginUser.getName());
     }
 
     public void btn(View view) {

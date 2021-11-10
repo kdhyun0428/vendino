@@ -264,15 +264,15 @@
 
     <Button
         android:id="@+id/button5"
-        android:onClick="signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="154dp"
+        android:onClick="signUp"
         android:text="회원가입 완료"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout19"
+        app:layout_constraintTop_toBottomOf="@+id/password2"
+        app:layout_constraintVertical_bias="0.82"
         android:background="@color/black"
         android:textColor="@color/white"/>
 
