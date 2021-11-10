@@ -10,14 +10,17 @@
         <entry key="..\:/Users/kiyeol/Documents/GitHub/vendino/app/src/main/res/layout/activity_main3.xml" value="0.1" />
         <entry key="..\:/Users/kiyeol/Documents/GitHub/vendino/app/src/main/res/layout/activity_main4.xml" value="0.1" />
         <entry key="..\:/Users/kiyeol/Documents/GitHub/vendino/app/src/main/res/layout/activity_map.xml" value="0.16" />
-        <entry key="..\:/Users/kiyeol/Documents/GitHub/vendino/app/src/main/res/layout/activity_password.xml" value="0.33" />
+        <entry key="..\:/Users/kiyeol/Documents/GitHub/vendino/app/src/main/res/layout/activity_password.xml" value="0.2" />
+        <entry key="..\:/Users/kiyeol/Documents/GitHub/vendino/app/src/main/res/layout/activity_report.xml" value="0.2028985507246377" />
+        <entry key="..\:/Users/kiyeol/Documents/GitHub/vendino/app/src/main/res/layout/activity_setting.xml" value="0.15416666666666667" />
         <entry key="..\:/Users/kiyeol/Documents/GitHub/vendino/app/src/main/res/layout/activity_sign_up.xml" value="0.27853260869565216" />
+        <entry key="..\:/Users/kiyeol/Documents/GitHub/vendino/app/src/main/res/layout/activity_splash.xml" value="0.1757852077001013" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2128623188405797" />
         <entry key="app/src/main/res/layout/activity_map.xml" value="0.17553191489361702" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

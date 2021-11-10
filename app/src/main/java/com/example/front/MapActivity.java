@@ -153,6 +153,10 @@ public class MapActivity extends AppCompatActivity {
         }
     }
 
+        public void mapButton(View view) {
+//        skdalksdjlk
+        }
+
     class GPSListener implements LocationListener {
         public void onLocationChanged(Location location) {
              latitude = location.getLatitude();
@@ -253,6 +257,7 @@ public class MapActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
 }
 
 

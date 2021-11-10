@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button7 = findViewById(R.id.button7);
-        button7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(), SubActivity.class);
-                startActivity(intent);
-            }
-        });
+//        Button button7 = findViewById(R.id.button7);
+//        button7.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v){
+//                Intent intent = new Intent(getApplicationContext(), SubActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         id = findViewById(R.id.email);
         pw = findViewById(R.id.pw);
