@@ -1,4 +1,0 @@
-com/example/googlemapsandroidapiexample/BuildConfig.java
- com.example.googlemapsandroidapiexample.BuildConfig
-com/example/googlemapsandroidapiexample/MainActivity.java
- com.example.googlemapsandroidapiexample.MainActivity

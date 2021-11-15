@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loginHandler(View view) {
+        System.out.println("login");
         User loginUser = new User();
 
         loginUser.setId(id.getText().toString());
@@ -78,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 if(response.isSuccessful()){
-                    System.out.println(response.body().toString());
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     Gson gson = new Gson();
                     User _logined = gson.fromJson(response.body(), User.class);

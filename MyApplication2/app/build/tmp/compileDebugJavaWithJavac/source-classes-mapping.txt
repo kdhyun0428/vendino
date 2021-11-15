@@ -1,6 +1,0 @@
-com/example/myapplication/BuildConfig.java
- com.example.myapplication.BuildConfig
-com/example/myapplication/MainActivity.java
- com.example.myapplication.MainActivity
-com/example/myapplication/TestView.java
- com.example.myapplication.TestView

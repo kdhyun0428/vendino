@@ -48,6 +48,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void signUp(View view) {
+        System.out.println("13123");
                 if (
                 email1.getText().length() == 0 ||//email 앞부분검사
                         email2.getText().length() == 0//email 뒷부분검사
