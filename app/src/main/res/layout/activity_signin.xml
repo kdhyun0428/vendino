@@ -97,8 +97,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="42dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout16"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,17 +108,25 @@
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:srcCompat="@drawable/ic_baseline_check_24" />
 
         <TextView
             android:id="@+id/textView11"
-            android:layout_width="wrap_content"
+            android:layout_width="292dp"
             android:layout_height="match_parent"
-            android:text="약관 전체동의" />
+            android:gravity="left|center"
+            android:text=" 약관 전체동의" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:id="@+id/linearLayout16"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -148,9 +156,11 @@
             android:id="@+id/checkBox1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:id="@+id/linearLayout17"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -188,6 +198,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout19"
@@ -223,6 +234,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:id="@+id/linearLayout19"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -234,6 +246,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout18">
+
 
         <LinearLayout
             android:layout_width="0dp"
@@ -255,7 +268,6 @@
                 android:text="SMS을 통해 할인, 이벤트 정보를 보냅니다" />
         </LinearLayout>
 
-
         <CheckBox
             android:id="@+id/checkBox4"
             android:layout_width="wrap_content"
@@ -266,6 +278,7 @@
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
         android:onClick="signUp"
         android:text="회원가입 완료"
         app:layout_constraintBottom_toBottomOf="parent"
