@@ -34,15 +34,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Button button7 = findViewById(R.id.button7);
-//        button7.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v){
-//                Intent intent = new Intent(getApplicationContext(), SubActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
         id = findViewById(R.id.email);
         pw = findViewById(R.id.pw);
 
@@ -60,11 +51,6 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_setting);
         }
     }
-
-//    public void btn(View view) {
-//        Intent intent = new Intent(getApplicationContext(), FindePassword.class);
-//        startActivity(intent);
-//    }
 
     public void findPassword(View view) {
         Intent intent = new Intent(getApplicationContext(), FindPassword.class);
@@ -84,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 if(response.isSuccessful()){
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    System.out.println("????? "+response.body().toString());
+                    Intent intent = new Intent(getApplicationContext(), MapActivity.class);
                     Gson gson = new Gson();
                     User _logined = gson.fromJson(response.body(), User.class);
                     //참고사이트 https://milkissboy.tistory.com/34

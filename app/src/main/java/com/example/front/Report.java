@@ -41,27 +41,27 @@ public class Report extends AppCompatActivity {
             return;
         }
 
-//        ReportParam param = new ReportParam();
-//        param.setUser_id(loginUser.getUid());
-//        param.setContent(content.getText().toString());
-//        Call<JsonObject> call = service.saveReport(param);
-//        call.enqueue(
-//                new Callback<JsonObject>() {
-//                    @Override
-//                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-//                        if(response.isSuccessful()){
-//                            System.out.println("success : "+response.body().toString());
-//
-//                            finish();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<JsonObject> call, Throwable t) {
-//
-//                    }
-//                }
-//        );
-        finish();
+        ReportParam param = new ReportParam();
+        param.setUser_id(loginUser.getUid());
+        param.setContent(content.getText().toString());
+        Call<JsonObject> call = service.saveReport(param);
+        call.enqueue(
+                new Callback<JsonObject>() {
+                    @Override
+                    public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                        if(response.isSuccessful()){
+                            System.out.println("success : "+response.body().toString());
+
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonObject> call, Throwable t) {
+
+                    }
+                }
+        );
+//        finish();
     }
 }

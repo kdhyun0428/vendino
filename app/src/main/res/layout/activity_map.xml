@@ -82,5 +82,13 @@
         android:onClick="startHandler"
         android:text="시작하기"
         android:textColor="@color/white" />
-
+    <ImageView
+            android:id="@+id/settingBtn"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="goToSetting"
+        android:src="@drawable/mylocation" />
 </RelativeLayout>

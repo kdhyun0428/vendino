@@ -44,10 +44,13 @@ public class MapActivity extends AppCompatActivity {
     MarkerOptions destinationMarker;
     Button button=null;
     Button startbutton=null;
+    ImageView settingBtn=null;
+
     LinearLayout container = null;
     boolean flag = true;
     Double latitude=null;
     Double longitude =null;
+    User loginUser=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,12 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
 
         startbutton = findViewById(R.id.startbutton);
+        settingBtn = findViewById(R.id.settingBtn);
         container = findViewById(R.id.container);
+
+        Bundle bundle = getIntent().getExtras();
+        loginUser= (User) bundle.getSerializable("user");
+        System.out.println(loginUser.getName());
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -178,33 +186,38 @@ public class MapActivity extends AppCompatActivity {
         Log.d("showCurrentLocation2", "showCurrentLocation2");
 
         showMyLocationMarker(curPoint);
-        showDestinationLocation();
+        showDestinationLocation(curPoint);
     }
-    private void showDestinationLocation(){
+    private void showDestinationLocation(LatLng curPoint){
 
-        LatLng curPoint = new LatLng(latitude, longitude);
 
         destinationMarker = new MarkerOptions();
-        destinationMarker.position(curPoint);
-        destinationMarker.title("● 내 위치\n");
+
+        destinationMarker.title("● 목적지 \n");
         destinationMarker.snippet("● GPS로 확인한 위치");
-        destinationMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.mylocation));
-        map.addMarker(destinationMarker);
+        destinationMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.destination));
+//
         int x1 = (int)Math.random()*(1861900+0+1)+0;
         int y1 = (int)Math.random()*(112430932+116781668+1)-116781668;
         double tempX1 = latitude+x1;
         double tempY1 = longitude+y1;
-        Log.d("tempX1", tempX1+"");
-        Log.d("tempY1", tempY1+"");
-
-
+//        Log.d("tempX1", tempX1+"");
+//        Log.d("tempY1", tempY1+"");
+//
+//
         int x2 = (int)Math.random()*(902896502+894791498+1)-894791498;
-        int y2 = (int)Math.random()*(11002536-3669818+1)+3669818;
+//        int y2 = (int)Math.random()*(11002536-3669818+1)+3669818;
         double tempX2 = latitude+x2;
-        double tempY2 = longitude+y2;
-        Log.d("tempX2", tempX2+"");
-        Log.d("tempY2", tempY2+"");
+//        double tempY2 = longitude+y2;
+//        Log.d("tempX2", tempX2+"");
+//        Log.d("tempY2", tempY2+"");
 
+        double a = curPoint.latitude+ (tempX1*0.00001);
+        double b = curPoint.longitude+ (tempX2*0.00001);
+        LatLng curPoint1 = new LatLng(a, b);
+
+        destinationMarker.position(curPoint1);
+        map.addMarker(destinationMarker);
 
     }
 
@@ -230,6 +243,7 @@ public class MapActivity extends AppCompatActivity {
     public void startHandler(View view) {
         button.setVisibility(View.GONE);
         startbutton.setVisibility(View.GONE);
+        settingBtn.setVisibility(View.GONE);
         container.setVisibility(View.VISIBLE);
     }
     //지도 모서리 gps or wifi로 위치찾기 버튼
@@ -248,10 +262,18 @@ public class MapActivity extends AppCompatActivity {
             container.setVisibility(View.GONE);
             button.setVisibility(View.VISIBLE);
             startbutton.setVisibility(View.VISIBLE);
+            settingBtn.setVisibility(View.VISIBLE);
         }
         else{
             super.onBackPressed();
         }
+    }
+    public void goToSetting(View view) {
+        Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("user", loginUser);   // Object 넘기기
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
 
