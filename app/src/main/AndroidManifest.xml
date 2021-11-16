@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Front"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".FindId"
+            android:exported="true" />
+        <activity
             android:name=".Report"
             android:exported="true" />
         <activity

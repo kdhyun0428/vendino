@@ -83,6 +83,7 @@
             android:layout_height="48dp"
             android:text="아이디 찾기"
             android:textAlignment="center"
+            android:onClick="moveFindId"
             />
 
     </LinearLayout>

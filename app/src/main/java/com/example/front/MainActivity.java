@@ -48,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void moveFindId(View view) {
+        Intent intent = new Intent(getApplicationContext(), FindId.class);
+        startActivity(intent);
+    }
+
     public class SubActivity extends AppCompatActivity {
         @Override
         protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -102,9 +107,6 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(e.toString());
             e.printStackTrace();
         }
-//        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-//        startActivity(intent);
-
 
     }
 

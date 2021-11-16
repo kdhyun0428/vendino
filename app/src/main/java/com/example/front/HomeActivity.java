@@ -66,40 +66,40 @@ public class HomeActivity extends AppCompatActivity {
 
 //        if(recyclerView!=null){
 //            Call<JsonArray> call = service.getUseres();
-//            try {
-//                call.enqueue(
-//                        new Callback<JsonArray>() {
-//                            @Override
-//                            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
-//                                System.out.println("response : "+response.body());
-//                                if(response.isSuccessful()){
-//                                    JsonArray result =  response.body();
-//                                    ArrayList<User> users = new ArrayList<User>();
-//                                    UserAdapter adapter = new UserAdapter();
-//
-//                                    for(int i =0;i<result.size();i++){
-//                                        Gson gson = new Gson();
-//                                        User user = gson.fromJson(result.get(i), User.class);
-//                                        System.out.println("user : "+result.get(i)+"/"+user.getName());
-//                                        //users.add(user);
-//                                        adapter.addItem(user);
-//                                    }
-//                                    recyclerView.setAdapter(adapter);
-//
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onFailure(Call<JsonArray> call, Throwable t) {
-//
-//                            }
-//                        }
-//                );
-//
-//            } catch (Exception e) {
-//                System.out.println(e.toString());
-//                e.printStackTrace();
-//            }
+////            try {
+////                call.enqueue(
+////                        new Callback<JsonArray>() {
+////                            @Override
+////                            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+////                                System.out.println("response : "+response.body());
+////                                if(response.isSuccessful()){
+////                                    JsonArray result =  response.body();
+////                                    ArrayList<User> users = new ArrayList<User>();
+////                                    UserAdapter adapter = new UserAdapter();
+////
+////                                    for(int i =0;i<result.size();i++){
+////                                        Gson gson = new Gson();
+////                                        User user = gson.fromJson(result.get(i), User.class);
+////                                        System.out.println("user : "+result.get(i)+"/"+user.getName());
+////                                        //users.add(user);
+////                                        adapter.addItem(user);
+////                                    }
+////                                    recyclerView.setAdapter(adapter);
+////
+////                                }
+////                            }
+////
+////                            @Override
+////                            public void onFailure(Call<JsonArray> call, Throwable t) {
+////
+////                            }
+////                        }
+////                );
+////
+////            } catch (Exception e) {
+////                System.out.println(e.toString());
+////                e.printStackTrace();
+////            }
 //        }
 
 

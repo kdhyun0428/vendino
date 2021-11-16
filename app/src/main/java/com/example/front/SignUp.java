@@ -68,6 +68,7 @@ public class SignUp extends AppCompatActivity {
         ) {
             Toast.makeText(getApplicationContext(), "필수 체크를 해주세요", Toast.LENGTH_LONG).show();
         } else {
+            System.out.println("회원가입시작");
             User newUser = new User();
             newUser.setId(email1.getText().toString()+"@"+email2.getText().toString());
             newUser.setName(ninkname.getText().toString());
