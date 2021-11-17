@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">front</string>
+    <string name="app_name">vendino</string>
     <string name="티켓구매">티켓 구매</string>
     <string name="티켓">티켓구매</string>
     <string name="todo1">TODO</string>
