@@ -1,4 +1,5 @@
 package com.example.front;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -24,11 +25,14 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.runtime.Permission;
+
 import java.util.List;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,16 +46,17 @@ public class MapActivity extends AppCompatActivity {
 
     MarkerOptions myLocationMarker;
     MarkerOptions destinationMarker;
-    Button button=null;
-    Button startbutton=null;
-    ImageView settingBtn=null;
+    Button button = null;
+    Button startbutton = null;
+    ImageView settingBtn = null;
 
     LinearLayout container = null;
     boolean flag = true;
-    Double latitude=null;
-    Double longitude =null;
-    User loginUser=null;
-
+    Double latitude = null;
+    Double longitude = null;
+    User loginUser = null;
+    Marker m = null;
+    LatLng curPoint=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,11 +127,10 @@ public class MapActivity extends AppCompatActivity {
 
         try {
             Location location = null;
-            if(flag){
-                location  = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            }
-            else{
-                location  = manager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            if (flag) {
+                location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            } else {
+                location = manager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
             }
 
             GPSListener gpsListener = new GPSListener();
@@ -150,74 +154,98 @@ public class MapActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "내 위치확인 요청함", Toast.LENGTH_SHORT).show();
 
             gpsListener.onLocationChanged(location);
-        } catch(SecurityException e) {
+        } catch (SecurityException e) {
             Log.d("SecurityException", "SecurityException");
 
             e.printStackTrace();
         }
     }
 
-        public void mapButton(View view) {
-//        skdalksdjlk
-        }
+    public void mapButton(View view) {
+    }
 
     class GPSListener implements LocationListener {
         public void onLocationChanged(Location location) {
-             latitude = location.getLatitude();
-             longitude = location.getLongitude();
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
 
-            String message = "내 위치 -> Latitude : "+ latitude + "\nLongitude:"+ longitude;
+            String message = "내 위치 -> Latitude : " + latitude + "\nLongitude:" + longitude;
             Log.d("Map", message);
 
             showCurrentLocation(latitude, longitude);
         }
 
-        public void onProviderDisabled(String provider) { }
+        public void onProviderDisabled(String provider) {
+        }
 
-        public void onProviderEnabled(String provider) { }
+        public void onProviderEnabled(String provider) {
+        }
 
-        public void onStatusChanged(String provider, int status, Bundle extras) { }
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+        }
     }
 
     private void showCurrentLocation(Double latitude, Double longitude) {
         Log.d("showCurrentLocation", "showCurrentLocation");
-        LatLng curPoint = new LatLng(latitude, longitude);
+        curPoint = new LatLng(latitude, longitude);
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(curPoint, 15));
         Log.d("showCurrentLocation2", "showCurrentLocation2");
 
         showMyLocationMarker(curPoint);
-        showDestinationLocation(curPoint);
+        //showDestinationLocation(curPoint);
     }
-    private void showDestinationLocation(LatLng curPoint){
 
-
+    private void showDestinationLocation(LatLng curPoint) {
         destinationMarker = new MarkerOptions();
-
         destinationMarker.title("● 목적지 \n");
         destinationMarker.snippet("● GPS로 확인한 위치");
         destinationMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.destination));
 //
-        int x1 = (int)Math.random()*(1861900+0+1)+0;
-        int y1 = (int)Math.random()*(112430932+116781668+1)-116781668;
-        double tempX1 = latitude+x1;
-        double tempY1 = longitude+y1;
+        int x1 = (int) Math.random() * (1861900 + 0 + 1) + 0;
+        int y1 = (int) Math.random() * (112430932 + 116781668 + 1) - 116781668;
+        double tempX1 = latitude + x1;
+        double tempY1 = longitude + y1;
 //        Log.d("tempX1", tempX1+"");
 //        Log.d("tempY1", tempY1+"");
 //
-//
-        int x2 = (int)Math.random()*(902896502+894791498+1)-894791498;
-//        int y2 = (int)Math.random()*(11002536-3669818+1)+3669818;
-        double tempX2 = latitude+x2;
+//        (int) Math.random() * (최댓값-최소값+1) + 최소값
+        int tempValue = (int)(new Random().nextInt(10)+1);
+        Log.d("tempValue ", "" + tempValue);
+
+        boolean flag = new Random().nextBoolean() ;
+        double x2 = 0;
+        if (flag) {
+            x2 = tempValue * 0.001;
+        } else {
+            x2 = tempValue * -0.001;
+        }
+
+         Log.d("x2 ", "" + x2);
+        Log.d("latitude ", "" + longitude);
+
+//      int y2 = (int)Math.random()*(11002536-3669818+1)+3669818;
+        double tempX2 = longitude + x2;
+
 //        double tempY2 = longitude+y2;
 //        Log.d("tempX2", tempX2+"");
 //        Log.d("tempY2", tempY2+"");
 
-        double a = curPoint.latitude+ (tempX1*0.00001);
-        double b = curPoint.longitude+ (tempX2*0.00001);
+        double a = curPoint.latitude + (tempX1 * 0.00001);
+        double b = tempX2;
+        Log.d("a ", "" + a);
+        Log.d("b", "" + b);
         LatLng curPoint1 = new LatLng(a, b);
+        Log.d("tempY2", curPoint1.toString());
 
-        destinationMarker.position(curPoint1);
-        map.addMarker(destinationMarker);
+        if (m == null) {
+            Log.d("m1 ", "null");
+            destinationMarker.position(curPoint1);
+            m = map.addMarker(destinationMarker);
+        } else {
+            Log.d("m2 ", "m is not null");
+            m.setPosition(curPoint1);
+        }
+
 
     }
 
@@ -245,7 +273,12 @@ public class MapActivity extends AppCompatActivity {
         startbutton.setVisibility(View.GONE);
         settingBtn.setVisibility(View.GONE);
         container.setVisibility(View.VISIBLE);
+        if(curPoint!=null){
+            showDestinationLocation(curPoint);
+        }
+
     }
+
     //지도 모서리 gps or wifi로 위치찾기 버튼
     public void locationSetting(View view) {
         if (view != null) {
@@ -258,16 +291,20 @@ public class MapActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         System.out.println(startbutton.getVisibility());
-        if(startbutton.getVisibility()!=View.VISIBLE){
+        if (startbutton.getVisibility() != View.VISIBLE) {
+            if (m != null) {
+                m.remove();
+                m=null;
+            }
             container.setVisibility(View.GONE);
             button.setVisibility(View.VISIBLE);
             startbutton.setVisibility(View.VISIBLE);
             settingBtn.setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
             super.onBackPressed();
         }
     }
+
     public void goToSetting(View view) {
         Intent intent = new Intent(getApplicationContext(), SettingActivity.class);
         Bundle bundle = new Bundle();
@@ -276,8 +313,6 @@ public class MapActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
-
 
 
 //36.026723,129.3657243
